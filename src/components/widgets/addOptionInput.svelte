@@ -8,7 +8,7 @@
 		dispatch('add-option', option);
 		option = '';
 	}
-	function handlekeyUp(e) {
+	function handleKeyUp(e) {
 		if (e.key !== 'Enter' && e.key !== 'Return') return;
 		handleAddOption();
 	}
