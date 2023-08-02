@@ -5,7 +5,11 @@
 </script>
 
 <AppRail>
-	<AppRailAnchor href="/" selected={$page.url.pathname === '/'} name="food" title="food">
+	<AppRailAnchor 
+		href="/" 
+		selected={$page.url.pathname === '/'} 
+		name="food" 
+		title="food">
 		<svelte:fragment slot="lead">
 			<iconify-icon class="h1" icon="mdi:baguette" />
 		</svelte:fragment>
