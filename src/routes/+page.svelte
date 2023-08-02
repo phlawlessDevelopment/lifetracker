@@ -3,10 +3,14 @@
 	import NotesInput from '../components/widgets/notesInput.svelte';
 	import RangeSlider from '../components/widgets/rangeSlider.svelte';
 	import Select from '../components/widgets/select.svelte';
+	import { DateInput, localeFromDateFnsLocale } from 'date-picker-svelte';
+	import enGb from 'date-fns/locale/en-GB';
 	let options = ['Meatballs + Cranberry', 'Cornflakes + Raisans'];
 	function handleAddOption(e) {
 		options = [...options, e.detail];
 	}
+	let date = new Date();
+	let locale = localeFromDateFnsLocale(enGb);
 </script>
 
 <div class="flex flex-col gap-4 p-4">
@@ -20,5 +24,9 @@
 
 	<div class="card variant-glass-tertiary p-4">
 		<RangeSlider label="Range slider" />
+	</div>
+	<div class="card variant-glass-tertiary p-4">
+		<div>Date picker</div>
+		<DateInput bind:value={date} {locale} />
 	</div>
 </div>
