@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	export let label;
 
 	const dispatch = createEventDispatcher();
 	let option = '';
@@ -14,10 +15,10 @@
 	}
 </script>
 
-<div class="flex items-end">
+<div class="flex items-end gap-4">
 	<label class="label">
-		<span>Add an option </span>
+		<span>Add a {label} </span>
 		<input class="input" type="text" bind:value={option} on:keyup={handleKeyUp} />
 	</label>
-	<button class="btn variant-ghost-secondary" on:click={handleAddOption}> Submit</button>
+	<button class="btn variant-ghost-secondary" on:click={handleAddOption}> Add</button>
 </div>

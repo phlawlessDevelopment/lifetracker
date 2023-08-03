@@ -1,0 +1,46 @@
+Food
+	option meals
+	notes
+	date
+	submit
+	
+Hydration
+	option mesurements
+	slider amount
+	option drinks
+	notes
+	date
+	submit
+	
+Sleep
+	double-slider start - end persist
+	add new slider
+	notes
+	date
+	submit
+	
+Mood
+	choiceGrid happy/sad/angry/etc
+	notes
+	date
+	submit
+	
+Digestion
+	choiceGrid diarrhea/constipation/vomiting/cramps/trapped wind
+	notes
+	date
+	submit
+
+Smoking
+	joint count
+	daily weigh-in
+	notes
+	date
+	submit
+
+
+Widgets
+	counter
+	number
+	choiceGrid
+	fix date

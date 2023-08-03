@@ -1,9 +1,16 @@
 <script>
+	import { SleepStore } from '../../stores';
 	export let min = 0;
 	export let max = 100;
 	export let label;
-	let lowerVal = min;
-	let upperVal = max;
+
+	let lowerVal;
+	let upperVal;
+
+	SleepStore.subscribe((s) => {
+		lowerVal = s[0];
+		upperVal = s[1];
+	});
 
 	handleLower();
 	handleUpper();
@@ -12,8 +19,8 @@
 		lowerVal = parseInt(lowerVal);
 		upperVal = parseInt(upperVal);
 
-		if (upperVal < lowerVal + 4) {
-			lowerVal = upperVal - 4;
+		if (upperVal < lowerVal + 1) {
+			lowerVal = upperVal - 1;
 		}
 	}
 
@@ -21,8 +28,8 @@
 		lowerVal = parseInt(lowerVal);
 		upperVal = parseInt(upperVal);
 
-		if (lowerVal > upperVal - 4) {
-			upperVal = lowerVal + 4;
+		if (lowerVal > upperVal - 1) {
+			upperVal = lowerVal + 1;
 		}
 	}
 </script>
@@ -34,7 +41,8 @@
 		<input type="range" {min} {max} bind:value={upperVal} on:input={handleUpper} />
 	</span>
 	<div>
-		{lowerVal} - {upperVal}
+		{new Date(lowerVal).toLocaleTimeString()} -> {new Date(upperVal).toLocaleTimeString()}
+		{new Date(upperVal - lowerVal).toLocaleTimeString()}
 	</div>
 </div>
 
