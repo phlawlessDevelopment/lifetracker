@@ -2,6 +2,7 @@
 	import NotesInput from '../components/widgets/notesInput.svelte';
 	import Datestamp from '../components/widgets/datestamp.svelte';
 	import OptionWithAdd from '../components/widgets/optionWithAdd.svelte';
+
 	let options = ['Meatballs + Cranberry', 'Cornflakes + Raisins'];
 </script>
 

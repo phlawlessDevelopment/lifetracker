@@ -1,12 +1,13 @@
 <script>
-	import RangeSlider from '../../components/widgets/rangeSlider.svelte';
+	import Counter from '../../components/widgets/counter.svelte';
+	import Number from '../../components/widgets/number.svelte';
 	import NotesInput from '../../components/widgets/notesInput.svelte';
 	import Datestamp from '../../components/widgets/datestamp.svelte';
-	import ChoiceGrid from '../../components/widgets/choiceGrid.svelte';
 	/* 
   
-Digestion
-	choiceGrid diarrhea/constipation/vomiting/cramps/trapped wind
+Smoking
+	joint count
+	daily weigh-in
 	notes
 	date
 	submit
@@ -15,22 +16,11 @@ Digestion
 
 <div class="flex flex-col gap-4 p-4">
 	<div class="card variant-glass-tertiary p-4">
-	
-		<ChoiceGrid
-			label="Mood"
-			icons={[
-				'healthicons:intestine',
-				'healthicons:stomach',
-				'healthicons:vomiting',
-		]}
-			labels={[
-				'excited',
-				'happier',
-				'happy',
-			]}
-		/>
+		<Counter />
 	</div>
-
+	<div class="card variant-glass-tertiary p-4">
+		<Number />
+	</div>
 	<div class="card variant-glass-tertiary p-4">
 		<NotesInput />
 	</div>

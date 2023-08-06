@@ -22,6 +22,17 @@
 		</svelte:fragment>
 		<span>Hydration</span>
 	</AppRailAnchor>
+	<AppRailAnchor
+		href="/sleep"
+		selected={$page.url.pathname === '/sleep'}
+		name="sleep"
+		title="sleep"
+	>
+		<svelte:fragment slot="lead">
+			<iconify-icon class="h1" icon="mdi:power-sleep" />
+		</svelte:fragment>
+		<span>sleep</span>
+	</AppRailAnchor>
 	<AppRailAnchor href="/mood" selected={$page.url.pathname === '/mood'} name="mood" title="mood">
 		<svelte:fragment slot="lead">
 			<iconify-icon class="h1" icon="mdi:emoticon" />

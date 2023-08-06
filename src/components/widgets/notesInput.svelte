@@ -1,8 +1,4 @@
-<script>
-	export let label;
-</script>
-
 <label class="label">
-	<span>{label}</span>
-	<textarea class="textarea" rows="4" placeholder={`${label}...`} />
+	<span>Notes</span>
+	<textarea class="textarea" rows="4" placeholder="type some notes..." />
 </label>
