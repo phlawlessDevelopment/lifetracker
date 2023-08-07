@@ -3,6 +3,12 @@ import { localStorageStore } from '@skeletonlabs/skeleton';
 
 const UserStore = writable(null);
 const PageStore = writable("Home");
-const SleepStore = localStorageStore("Sleep", [+new Date().getTime(), +(new Date().getTime() + 8 * 60 * 60 * 1000)])
 
-export { UserStore, PageStore, SleepStore };
+const FoodStore = localStorageStore("Food", [])
+const HydrationStore = localStorageStore("Hydration", [])
+const SleepStore = localStorageStore("Sleep", [])
+const MoodStore = localStorageStore("Mood", [])
+const DigestionStore = localStorageStore("Digestion", [])
+const SmokingStore = localStorageStore("Smoking", [])
+
+export { UserStore, PageStore, FoodStore, HydrationStore, SleepStore, MoodStore, DigestionStore, SmokingStore };

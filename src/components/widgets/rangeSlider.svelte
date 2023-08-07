@@ -1,17 +1,21 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
 	import { SleepStore } from '../../stores';
+
+	export let idx;
 
 	let min = new Date();
 	let max = new Date();
 	let lowerVal;
 	let upperVal;
+	let dispatch = createEventDispatcher();
 
 	$: lowerDisplay = new Date(lowerVal).toLocaleTimeString();
 	$: upperDisplay = new Date(upperVal).toLocaleTimeString();
 
 	SleepStore.subscribe((s) => {
-		lowerVal = new Date(s[0]);
-		upperVal = new Date(s[1]);
+		lowerVal = new Date(s[idx].lowerVal);
+		upperVal = new Date(s[idx].upperVal);
 		const today = new Date();
 		lowerVal.setDate(today.getDate());
 		lowerVal.setMonth(today.getMonth());
@@ -30,12 +34,25 @@
 		if (upperVal < lowerVal + 1) {
 			lowerVal = upperVal - 1;
 		}
+
+		dispatch('change', {
+			min,
+			max,
+			lowerVal,
+			upperVal
+		});
 	}
 
 	function handleLower() {
 		if (lowerVal > upperVal - 1) {
 			upperVal = lowerVal + 1;
 		}
+		dispatch('change', {
+			min,
+			max,
+			lowerVal,
+			upperVal
+		});
 	}
 </script>
 

@@ -1,8 +1,6 @@
 <script>
 	import Select from '../select.svelte';
 	import AddOptionInput from '../addOptionInput.svelte';
-	
-	
 	export let label;
 	export let options;
 		

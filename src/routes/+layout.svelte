@@ -5,7 +5,6 @@
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import Sidebar from '../components/sidebar.svelte';
 	import Header from '../components/header.svelte';
-	import Pageheader from '../components/pageheader.svelte';
 	import Footer from '../components/footer.svelte';
 </script>
 
@@ -15,8 +14,6 @@
 		<Sidebar />
 	</svelte:fragment>
 	<!-- (sidebarRight) -->
-	<svelte:fragment slot="pageHeader"><Pageheader /></svelte:fragment>
-	<!-- Router Slot -->
 	<slot />
 	<!-- ---- / ---- -->
 	<svelte:fragment slot="footer"><Footer /></svelte:fragment>
