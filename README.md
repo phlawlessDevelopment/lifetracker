@@ -1,18 +1,29 @@
-# create-svelte
+# LifeTracker
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This simple toool can be used to track your daily habits (food, hydration, sleep, mood, digestion, smoking)
 
-## Creating a project
+## Pages
 
-If you're seeing this, you've probably already done this step. Congrats!
+### General
+All pages include a general notes input box and an editable date/time stamp.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+### Food
+Dropdown of previous meals, with option to add a new meal.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+### Hydration
+Dropdown of previous drinks, with option to add a new drink, nested dropdown of mesurements (eg, pint, mug).
+
+### Sleep
+List of range sliders (2 handles), button to add a new slider.
+
+### Mood
+Multi select icon buttons for how your mood was that day.
+
+### Digestion
+Multi select icon buttons for various digestion problems, vomiting, diarrhoea, etc.
+
+### Smoking
+Counter componennt to count number of times you smoked, number input for weight.
 
 ## Developing
 
