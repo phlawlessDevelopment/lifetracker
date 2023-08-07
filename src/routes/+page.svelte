@@ -14,6 +14,6 @@
 		<NotesInput label="Write notes" />
 	</div>
 	<div class="card variant-glass-tertiary p-4">
-		<Datestamp label="date/time" />
+		<Datestamp />
 	</div>
 </div>

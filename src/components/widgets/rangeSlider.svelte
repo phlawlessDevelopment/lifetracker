@@ -1,33 +1,38 @@
 <script>
 	import { SleepStore } from '../../stores';
-	export let min = 0;
-	export let max = 100;
-	export let label;
 
+	let min = new Date();
+	let max = new Date();
 	let lowerVal;
 	let upperVal;
 
+	$: lowerDisplay = new Date(lowerVal).toLocaleTimeString();
+	$: upperDisplay = new Date(upperVal).toLocaleTimeString();
+
 	SleepStore.subscribe((s) => {
-		lowerVal = s[0];
-		upperVal = s[1];
+		lowerVal = new Date(s[0]);
+		upperVal = new Date(s[1]);
+		const today = new Date();
+		lowerVal.setDate(today.getDate());
+		lowerVal.setMonth(today.getMonth());
+		upperVal.setDate(today.getDate());
+		upperVal.setMonth(today.getMonth());
+		lowerVal = lowerVal.getTime();
+		upperVal = upperVal.getTime();
+		min = lowerVal - 12 * 60 * 60 * 1000;
+		max = upperVal + 12 * 60 * 60 * 1000;
 	});
 
 	handleLower();
 	handleUpper();
 
 	function handleUpper() {
-		lowerVal = parseInt(lowerVal);
-		upperVal = parseInt(upperVal);
-
 		if (upperVal < lowerVal + 1) {
 			lowerVal = upperVal - 1;
 		}
 	}
 
 	function handleLower() {
-		lowerVal = parseInt(lowerVal);
-		upperVal = parseInt(upperVal);
-
 		if (lowerVal > upperVal - 1) {
 			upperVal = lowerVal + 1;
 		}
@@ -35,14 +40,14 @@
 </script>
 
 <div class="flex flex-col gap-4">
-	<div>{label}</div>
+	<div>From -> To</div>
 	<span class="multi-range">
 		<input type="range" {min} {max} bind:value={lowerVal} on:input={handleLower} />
 		<input type="range" {min} {max} bind:value={upperVal} on:input={handleUpper} />
 	</span>
 	<div>
-		{new Date(lowerVal).toLocaleTimeString()} -> {new Date(upperVal).toLocaleTimeString()}
-		{new Date(upperVal - lowerVal).toLocaleTimeString()}
+		{lowerDisplay} -> {upperDisplay}
+		({new Date(upperVal - lowerVal).toLocaleTimeString()})
 	</div>
 </div>
 

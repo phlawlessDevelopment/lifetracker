@@ -4,5 +4,7 @@
 	let value = 1;
 </script>
 
-{label}
-<RangeSlider name="range-slider" bind:value max={25} step={1} ticked />
+<div class="p-2">
+	{`Number of ${label}s ${value}`}
+	<RangeSlider name="range-slider" bind:value min={1} max={5} step={0.25} ticked />
+</div>
