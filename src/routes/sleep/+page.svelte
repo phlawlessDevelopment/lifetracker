@@ -4,8 +4,6 @@
 	import Datestamp from '../../components/widgets/datestamp.svelte';
 	import { clipboard } from '@skeletonlabs/skeleton';
 
-	/* Sleep double-slider start - end persist add new slider notes date submit */
-
 	let times = [0];
 
 	function addNewTime() {

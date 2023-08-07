@@ -3,23 +3,14 @@
 	import Number from '../../components/widgets/number.svelte';
 	import NotesInput from '../../components/widgets/notesInput.svelte';
 	import Datestamp from '../../components/widgets/datestamp.svelte';
-	/* 
-  
-Smoking
-	joint count
-	daily weigh-in
-	notes
-	date
-	submit
-   */
 </script>
 
 <div class="flex flex-col gap-4 p-4">
 	<div class="card variant-glass-tertiary p-4">
-		<Counter />
+		<Counter label="Daily count" />
 	</div>
 	<div class="card variant-glass-tertiary p-4">
-		<Number />
+		<Number label="Weight (g)" />
 	</div>
 	<div class="card variant-glass-tertiary p-4">
 		<NotesInput />
