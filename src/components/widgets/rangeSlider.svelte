@@ -13,11 +13,6 @@
 	$: lowerDisplay = new Date(lowerVal).toLocaleTimeString();
 	$: upperDisplay = new Date(upperVal).toLocaleTimeString();
 
-	SleepRangeStore.subscribe((s) => {
-		// console.log(idx, s);
-		// if (!s[idx]) return;
-	});
-
 	handleLower();
 	handleUpper();
 
@@ -73,7 +68,7 @@
 	input[type='range'] {
 		box-sizing: border-box;
 		appearance: none;
-		width: 400px;
+		width: 100%;
 		margin: 0;
 		padding: 0 2px;
 		/* Add some L/R padding to ensure box shadow of handle is shown */

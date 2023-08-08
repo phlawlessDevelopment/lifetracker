@@ -47,8 +47,8 @@
 	}
 </script>
 
-<div class="flex flex-col gap-4 p-4">
-	<div class="card variant-glass-tertiary p-4 flex flex-col gap-2">
+<div class="card variant-glass-tertiary flex flex-col gap-2 p-4 md:grid md:grid-cols-2 md:gap-4">
+	<div class="col-span-2 flex flex-col gap-2">
 		<button class="btn variant-filled-tertiary" on:click={addNewTime}>New</button>
 		{#each times as time, i}
 			<div class="card variant-glass-tertiary p-4 flex flex-col gap-2">
@@ -63,14 +63,10 @@
 		{/each}
 	</div>
 
-	<div class="card variant-glass-tertiary p-4">
-		<NotesInput on:change={handleChangeNotes} />
-	</div>
-	<div class="card variant-glass-tertiary p-4">
-		<Datestamp on:change={handleChangeDate} />
-	</div>
+	<NotesInput on:change={handleChangeNotes} />
+	<Datestamp on:change={handleChangeDate} />
 
-	<div class="card variant-glass-tertiary p-4">
-		<button class="btn variant-filled-warning w-full" on:click={handleSubmit}>Submit</button>
-	</div>
+	<button class="btn variant-filled-warning w-full col-span-2" on:click={handleSubmit}
+		>Submit</button
+	>
 </div>

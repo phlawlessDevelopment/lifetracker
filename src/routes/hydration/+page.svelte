@@ -37,21 +37,17 @@
 	}
 </script>
 
-<div class="flex flex-col gap-4 p-4">
-	<div class="card variant-glass-tertiary p-4">
+<div class="card variant-glass-tertiary flex flex-col gap-2 p-4 md:grid md:grid-cols-2 md:gap-4">
+	<div class="col-span-2">
 		<OptionWithAdd label="drink" on:change={handleChangeDrink} store={DrinkOptionsStore}>
 			<OptionWithAdd label="mesurement" on:change={handleChangeSize} store={MesurementOptionsStore}>
 				<Slider bind:label={selectedSize} on:change={handleChangeAmount} />
 			</OptionWithAdd>
 		</OptionWithAdd>
 	</div>
-	<div class="card variant-glass-tertiary p-4">
-		<NotesInput on:change={handleChangeNotes} />
-	</div>
-	<div class="card variant-glass-tertiary p-4">
-		<DateStamp />
-	</div>
-	<div class="card variant-glass-tertiary p-4">
-		<button class="btn variant-filled-warning w-full" on:click={handleSubmit}>Submit</button>
-	</div>
+	<NotesInput on:change={handleChangeNotes} />
+	<DateStamp />
+	<button class="btn variant-filled-warning w-full col-span-2" on:click={handleSubmit}
+		>Submit</button
+	>
 </div>
