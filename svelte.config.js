@@ -1,5 +1,5 @@
 import adapter from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+ import { vitePreprocess } from '@sveltejs/kit/vite';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
@@ -9,8 +9,13 @@ const config = {
 	kit: {
 
 		adapter: adapter({
-			fallback: '200.html' // may differ from host to host
+			pages: 'build',
+			assets: 'build',
+			fallback: undefined,
+			precompress: false,
+			strict: true
 		})
 	}
+}
 };
 export default config;
