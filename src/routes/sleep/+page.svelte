@@ -3,28 +3,47 @@
 	import NotesInput from '../../components/widgets/notesInput.svelte';
 	import Datestamp from '../../components/widgets/datestamp.svelte';
 
-	import { SleepStore } from '../../stores';
+	import { SleepRangeStore, SleepStore } from '../../stores';
 
-	let times = [...$SleepStore];
+	let times = [];
+	let today = new Date();
+	let date = new Date();
+	let notes;
+
+	SleepRangeStore.subscribe((s) => {
+		times = [...s];
+	});
 
 	function addNewTime(e) {
-		SleepStore.update((s) => [
+		SleepRangeStore.update((s) => [
 			...s,
 			{
-				min: new Date(),
-				max: new Date(),
-				lowerVal: new Date(),
-				upperVal: new Date()
+				lowerVal: today.getTime(),
+				upperVal: today.getTime()
 			}
 		]);
-		times = [...$SleepStore];
 	}
 
 	function handleChangeRange(e) {
 		const newData = e.detail;
 		const idx = newData.idx;
 		delete newData.idx;
-		times = times.toSpliced(idx, 0, newData);
+		SleepRangeStore.set(times.toSpliced(idx, 1, newData));
+	}
+	function handleRemove(e) {
+		const idx = e.detail;
+		SleepRangeStore.set(times.toSpliced(idx, 1));
+	}
+	function handleSubmit() {
+		SleepStore.update((f) => [...f, { times, notes, date }]);
+	}
+	function handleChangeNotes(e) {
+		console.log(e);
+		notes = e.target.value;
+	}
+
+	function handleChangeDate(e) {
+		date = e.target.value;
 	}
 </script>
 
@@ -33,16 +52,22 @@
 		<button class="btn variant-filled-tertiary" on:click={addNewTime}>New</button>
 		{#each times as time, i}
 			<div class="card variant-glass-tertiary p-4 flex flex-col gap-2">
-				<RangeSlider on:changed={handleChangeRange} idx={i} />
+				<RangeSlider
+					lowerVal={time.lowerVal}
+					upperVal={time.upperVal}
+					on:change={handleChangeRange}
+					on:remove={handleRemove}
+					idx={i}
+				/>
 			</div>
 		{/each}
 	</div>
 
 	<div class="card variant-glass-tertiary p-4">
-		<NotesInput />
+		<NotesInput on:change={handleChangeNotes} />
 	</div>
 	<div class="card variant-glass-tertiary p-4">
-		<Datestamp />
+		<Datestamp on:change={handleChangeDate} />
 	</div>
 
 	<div class="card variant-glass-tertiary p-4">

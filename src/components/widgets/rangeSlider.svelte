@@ -1,30 +1,21 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-	import { SleepStore } from '../../stores';
+	import { SleepRangeStore } from '../../stores';
 
 	export let idx;
+	export let lowerVal;
+	export let upperVal;
 
-	let min = new Date();
-	let max = new Date();
-	let lowerVal;
-	let upperVal;
 	let dispatch = createEventDispatcher();
+	let min = lowerVal - 12 * 60 * 60 * 1000;
+	let max = upperVal + 12 * 60 * 60 * 1000;
 
 	$: lowerDisplay = new Date(lowerVal).toLocaleTimeString();
 	$: upperDisplay = new Date(upperVal).toLocaleTimeString();
 
-	SleepStore.subscribe((s) => {
-		lowerVal = new Date(s[idx].lowerVal);
-		upperVal = new Date(s[idx].upperVal);
-		const today = new Date();
-		lowerVal.setDate(today.getDate());
-		lowerVal.setMonth(today.getMonth());
-		upperVal.setDate(today.getDate());
-		upperVal.setMonth(today.getMonth());
-		lowerVal = lowerVal.getTime();
-		upperVal = upperVal.getTime();
-		min = lowerVal - 12 * 60 * 60 * 1000;
-		max = upperVal + 12 * 60 * 60 * 1000;
+	SleepRangeStore.subscribe((s) => {
+		// console.log(idx, s);
+		// if (!s[idx]) return;
 	});
 
 	handleLower();
@@ -36,6 +27,7 @@
 		}
 
 		dispatch('change', {
+			idx,
 			min,
 			max,
 			lowerVal,
@@ -48,16 +40,25 @@
 			upperVal = lowerVal + 1;
 		}
 		dispatch('change', {
+			idx,
 			min,
 			max,
 			lowerVal,
 			upperVal
 		});
 	}
+	function handleRemove() {
+		dispatch('remove', idx);
+	}
 </script>
 
 <div class="flex flex-col gap-4">
-	<div>From -> To</div>
+	<div class="w-full flex justify-between">
+		<div>From -> To</div>
+		<button class="btn-icon" on:click={handleRemove}>
+			<iconify-icon class="h3" icon="foundation:x" />
+		</button>
+	</div>
 	<span class="multi-range">
 		<input type="range" {min} {max} bind:value={lowerVal} on:input={handleLower} />
 		<input type="range" {min} {max} bind:value={upperVal} on:input={handleUpper} />

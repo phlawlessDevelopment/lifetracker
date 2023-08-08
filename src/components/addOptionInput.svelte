@@ -1,12 +1,10 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
 	export let label;
-
-	const dispatch = createEventDispatcher();
+	export let store;
 	let option = '';
 
 	function handleAddOption() {
-		dispatch('add-option', option);
+		store.update((o) => [...o, option]);
 		option = '';
 	}
 	function handleKeyUp(e) {

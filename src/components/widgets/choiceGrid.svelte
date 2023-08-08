@@ -1,17 +1,18 @@
 <script>
-	import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
-	import Datestamp from './datestamp.svelte';
-
+	import { createEventDispatcher } from 'svelte';
 	export let label;
 	export let icons = [];
 	export let labels = [];
 	let values = [];
+
+	let dispatch = createEventDispatcher();
 
 	function toggleSelection(i) {
 		if (values.includes(i)) values = values.filter((v) => v !== i);
 		else {
 			values = [...values, i];
 		}
+		dispatch('select', values);
 	}
 </script>
 

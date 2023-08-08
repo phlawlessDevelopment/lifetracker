@@ -4,5 +4,5 @@
 
 <label class="label">
 	<span>{label}</span>
-	<input class="input" type="number" />
+	<input class="input" on:change type="number" />
 </label>

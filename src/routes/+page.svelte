@@ -2,10 +2,9 @@
 	import NotesInput from '../components/widgets/notesInput.svelte';
 	import Datestamp from '../components/widgets/datestamp.svelte';
 	import OptionWithAdd from '../components/widgets/optionWithAdd.svelte';
-	import { FoodStore } from '../stores';
+	import { FoodOptionsStore, FoodStore } from '../stores';
 
-	let options = ['Meatballs + Cranberry', 'Cornflakes + Raisins'];
-	let food = options[0];
+	let food = $FoodOptionsStore[0];
 	let notes;
 	let date = new Date();
 
@@ -27,7 +26,12 @@
 
 <div class="flex flex-col gap-4 p-4">
 	<div class="card variant-glass-tertiary p-4">
-		<OptionWithAdd {options} label="food" on:change={handleChangeSelect} />
+		<OptionWithAdd
+			options={$FoodOptionsStore}
+			store={FoodOptionsStore}
+			label="food"
+			on:change={handleChangeSelect}
+		/>
 	</div>
 	<div class="card variant-glass-tertiary p-4">
 		<NotesInput label="Write notes" on:change={handleChangeNotes} />

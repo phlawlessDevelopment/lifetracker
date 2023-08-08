@@ -6,5 +6,5 @@
 
 <div class="p-2">
 	{`Number of ${label.toLowerCase()}s ${value}`}
-	<RangeSlider name="range-slider" bind:value min={1} max={5} step={0.25} ticked />
+	<RangeSlider name="range-slider" on:change bind:value min={1} max={5} step={0.25} ticked />
 </div>

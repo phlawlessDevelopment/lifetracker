@@ -3,36 +3,28 @@
 	import Slider from '../../components/widgets/slider.svelte';
 	import NotesInput from '../../components/widgets/notesInput.svelte';
 	import DateStamp from '../../components/widgets/datestamp.svelte';
-	import { HydrationStore } from '../../stores';
+	import { DrinkOptionsStore, HydrationStore, MesurementOptionsStore } from '../../stores';
 
-	let drinkOptions = ['Ribena', 'Ovaltine', 'Milk'];
-	let sizeOptions = ['Pint', 'Mug'];
-	let selectedSize = sizeOptions[0];
-	let selectedDrink = drinkOptions[0];
+	let selectedSize = $MesurementOptionsStore[0];
+	let selectedDrink = $DrinkOptionsStore[0];
 	let notes;
+	let amount;
 	let date = new Date();
 
-	function handleAddDrinkOption(e) {
-		if (e.detail.length < 1) return;
-		drinkOptions = [...drinkOptions, e.detail];
-	}
-
-	function handleAddSizeOption(e) {
-		if (e.detail.length < 1) return;
-		sizeOptions = [...sizeOptions, e.detail];
-	}
-
 	function handleChangeSize(e) {
-		selectedSize = sizeOptions[e.target.value];
+		selectedSize = $MesurementOptionsStore[e.target.value];
 	}
 	function handleChangeDrink(e) {
-		selectedDrink = drinkOptions[e.target.value];
+		selectedDrink = $DrinkOptionsStore[e.target.value];
+	}
+	function handleChangeAmount(e) {
+		amount = e.target.value;
 	}
 
 	function handleSubmit() {
 		HydrationStore.update((h) => [
 			...h,
-			{ drink: selectedDrink, mesurement: selectedSize, notes, date }
+			{ drink: selectedDrink, mesurement: selectedSize, amount, notes, date }
 		]);
 	}
 	function handleChangeNotes(e) {
@@ -47,19 +39,9 @@
 
 <div class="flex flex-col gap-4 p-4">
 	<div class="card variant-glass-tertiary p-4">
-		<OptionWithAdd
-			label="drink"
-			options={drinkOptions}
-			on:add-option={handleAddDrinkOption}
-			on:change={handleChangeDrink}
-		>
-			<OptionWithAdd
-				label="mesurement"
-				options={sizeOptions}
-				on:add-option={handleAddSizeOption}
-				on:change={handleChangeSize}
-			>
-				<Slider bind:label={selectedSize} />
+		<OptionWithAdd label="drink" on:change={handleChangeDrink} store={DrinkOptionsStore}>
+			<OptionWithAdd label="mesurement" on:change={handleChangeSize} store={MesurementOptionsStore}>
+				<Slider bind:label={selectedSize} on:change={handleChangeAmount} />
 			</OptionWithAdd>
 		</OptionWithAdd>
 	</div>
