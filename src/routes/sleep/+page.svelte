@@ -36,7 +36,7 @@
 	}
 	async function handleSubmit() {
 		SleepStore.update((f) => [...f, { times, notes, date }]);
-
+		console.log(JSON.stringify({ notes, date_time: date }))
 		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/sleep/', {
 			method: 'POST',
 			headers: {
