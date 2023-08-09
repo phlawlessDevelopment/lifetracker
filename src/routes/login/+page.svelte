@@ -8,7 +8,7 @@
 	// 'http://localhost:8000/get-token'
 
 	async function handleSubmit() {
-		const response = await fetch('http://localhost:8000/get-token/', {
+		const response = await fetch('https://phlawless.eu.pythonanywhere.com/get-token', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -19,6 +19,11 @@
 		if (data.token) {
 			UserStore.set(data.token);
 		}
+	}
+	function handleKeyUp(e){
+		if(e.key === 'Return' || e.key === 'Enter'){
+			handleSubmit();
+	}	
 	}
 </script>
 
@@ -31,7 +36,13 @@
 	</label>
 	<label class="label">
 		<span>Password</span>
-		<input class="input" bind:value={password} type="password" placeholder="*******" />
+		<input
+			class="input"
+			bind:value={password}
+			type="password"
+			placeholder="*******"
+			on:keyup={handleKeyUp}
+		/>
 	</label>
 	<button class="btn variant-filled-warning col-span-2" on:click={handleSubmit}> Log in</button>
 </div>
