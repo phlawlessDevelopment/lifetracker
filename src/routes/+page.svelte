@@ -19,7 +19,7 @@
 			body: JSON.stringify({ notes, meal, date_time: date })
 		});
 		console.log(response);
-		console.log(JSON.stringify({ notes, meal, date_time: date }));
+		console.log(JSON.stringify({ notes, meal, date_time: date.toISOString() }));
 	}
 	function handleChangeSelect(e) {
 		meal = e.target.value;
