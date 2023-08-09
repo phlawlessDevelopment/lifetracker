@@ -5,7 +5,7 @@
 	import { FoodOptionsStore, FoodStore } from '../stores';
 
 	let meal = $FoodOptionsStore[0];
-	let notes="";
+	let notes = '';
 	let date = new Date();
 
 	async function handleSubmit() {
@@ -15,9 +15,11 @@
 			headers: {
 				'Content-Type': 'application/json'
 			},
+
 			body: JSON.stringify({ notes, meal, date_time: date })
 		});
 		console.log(response);
+		console.log(JSON.stringify({ notes, meal, date_time: date }));
 	}
 	function handleChangeSelect(e) {
 		meal = e.target.value;
