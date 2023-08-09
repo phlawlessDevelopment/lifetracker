@@ -16,7 +16,7 @@
 				'Content-Type': 'application/json'
 			},
 
-			body: JSON.stringify({ notes, meal, date_time: date })
+			body: JSON.stringify({ notes, meal, date_time: date.toISOString() })
 		});
 		console.log(response);
 		console.log(JSON.stringify({ notes, meal, date_time: date.toISOString() }));
