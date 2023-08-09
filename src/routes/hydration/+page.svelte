@@ -7,8 +7,8 @@
 
 	let selectedSize = $MesurementOptionsStore[0];
 	let selectedDrink = $DrinkOptionsStore[0];
-	let notes;
-	let amount;
+	let notes = '';
+	let amount=1;
 	let date = new Date();
 
 	function handleChangeSize(e) {
@@ -33,7 +33,7 @@
 				date_time: date,
 				drink: selectedDrink,
 				mesurement: selectedSize,
-				amount,
+				amount
 			})
 		});
 	}
