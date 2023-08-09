@@ -20,10 +20,10 @@
 			UserStore.set(data.token);
 		}
 	}
-	function handleKeyUp(e){
-		if(e.key === 'Return' || e.key === 'Enter'){
+	function handleKeyUp(e) {
+		if (e.key === 'Return' || e.key === 'Enter') {
 			handleSubmit();
-	}	
+		}
 	}
 </script>
 
