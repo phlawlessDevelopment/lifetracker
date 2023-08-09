@@ -1,6 +1,5 @@
 <script>
 	import { AppBar, AppRailAnchor } from '@skeletonlabs/skeleton';
-	import { UserStore } from '../stores';
 </script>
 
 <AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">

@@ -2,7 +2,6 @@
 	import ChoiceGrid from '../../components/widgets/choiceGrid.svelte';
 	import NotesInput from '../../components/widgets/notesInput.svelte';
 	import Datestamp from '../../components/widgets/datestamp.svelte';
-	import { MoodStore } from '../../stores';
 	let labels = [
 		'excited',
 		'happier',
@@ -32,7 +31,7 @@
 		'mdi:emoticon-poop'
 	];
 	let values = [];
-	let notes = "";
+	let notes = '';
 	let date = new Date();
 
 	function handleSelect(e) {
@@ -57,7 +56,7 @@
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
-					text: values[i],
+					text: labels[values[i]],
 					mood: data.id
 				})
 			});

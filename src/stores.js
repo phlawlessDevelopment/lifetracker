@@ -10,12 +10,5 @@ const FoodOptionsStore = localStorageStore("FoodOptions", ['Meatballs + Cranberr
 const DrinkOptionsStore = localStorageStore("DrinkOptions", ['Ribena', 'Ovaltine', 'Milk']);
 const MesurementOptionsStore = localStorageStore("MesurementOptions", ['Pint', 'Mug']);
 
-// DB
-const FoodStore = localStorageStore("Food", [])
-const HydrationStore = localStorageStore("Hydration", [])
-const SleepStore = localStorageStore("Sleep", [])
-const MoodStore = localStorageStore("Mood", [])
-const DigestionStore = localStorageStore("Digestion", [])
-const SmokingStore = localStorageStore("Smoking", [])
 
-export { UserStore, PageStore, SleepRangeStore, SmokeCountStore, FoodOptionsStore, DrinkOptionsStore, MesurementOptionsStore, FoodStore, HydrationStore, SleepStore, MoodStore, DigestionStore, SmokingStore };
+export { UserStore, PageStore, SleepRangeStore, SmokeCountStore, FoodOptionsStore, DrinkOptionsStore, MesurementOptionsStore };

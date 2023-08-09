@@ -5,7 +5,7 @@
 	import Datestamp from '../../components/widgets/datestamp.svelte';
 	import { SmokeCountStore } from '../../stores';
 
-	let notes="";
+	let notes = '';
 	let date = new Date();
 	let weight = 0;
 
@@ -16,7 +16,7 @@
 				'Content-Type': 'application/json'
 			},
 
-			body: JSON.stringify({ notes, date_time: date, weight, count })
+			body: JSON.stringify({ notes, date_time: date, weight, $SmokeCountStore })
 		});
 	}
 

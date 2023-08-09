@@ -1,14 +1,12 @@
 <script>
-	import RangeSlider from '../../components/widgets/rangeSlider.svelte';
 	import NotesInput from '../../components/widgets/notesInput.svelte';
 	import Datestamp from '../../components/widgets/datestamp.svelte';
 	import ChoiceGrid from '../../components/widgets/choiceGrid.svelte';
-	import { DigestionStore } from '../../stores';
 
 	let labels = ['excited', 'happier', 'happy'];
 	let icons = ['healthicons:intestine', 'healthicons:stomach', 'healthicons:vomiting'];
 	let values = [];
-	let notes="";
+	let notes = '';
 	let date = new Date();
 
 	function handleSelect(e) {
@@ -27,13 +25,13 @@
 		const data = await response.json();
 
 		for (let i = 0; i < values.length; i++) {
-			const res = await fetch(`https://phlawless.eu.pythonanywhere.com/api/digestion_choice/`, {
+			const  = await fetch(`https://phlawless.eu.pythonanywhere.com/api/digestion_choice/`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
-					text: values[i],
+					text: labels[values[i]],
 					digestion: data.id
 				})
 			});

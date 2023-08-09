@@ -3,7 +3,7 @@
 	import NotesInput from '../../components/widgets/notesInput.svelte';
 	import Datestamp from '../../components/widgets/datestamp.svelte';
 
-	import { SleepRangeStore, SleepStore } from '../../stores';
+	import { SleepRangeStore } from '../../stores';
 
 	let times = [];
 	let today = new Date();
