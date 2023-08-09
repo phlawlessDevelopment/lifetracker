@@ -15,8 +15,29 @@
 		values = e.detail;
 	}
 
-	function handleSubmit() {
-		DigestionStore.update((m) => [...m, { notes, date, values: values.map((v) => labels[v]) }]);
+	async function handleSubmit() {
+		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/digestion/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+
+			body: JSON.stringify({ notes, date_time: date })
+		});
+		const data = await response.json();
+
+		for (let i = 0; i < values.length; i++) {
+			const res = await fetch(`https://phlawless.eu.pythonanywhere.com/api/digestion_choice/`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					text: values[i],
+					digestion: data.id
+				})
+			});
+		}
 	}
 	function handleChangeNotes(e) {
 		notes = e.target.value;

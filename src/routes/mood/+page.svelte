@@ -37,11 +37,31 @@
 
 	function handleSelect(e) {
 		values = e.detail;
-		console.log(values);
 	}
 
-	function handleSubmit() {
-		MoodStore.update((m) => [...m, { notes, date, values: values.map((v) => labels[v]) }]);
+	async function handleSubmit() {
+		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/mood/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+
+			body: JSON.stringify({ notes, date_time: date })
+		});
+		const data = await response.json();
+
+		for (let i = 0; i < values.length; i++) {
+			const res = await fetch(`https://phlawless.eu.pythonanywhere.com/api/mood_choice/`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					text: values[i],
+					mood: data.id
+				})
+			});
+		}
 	}
 	function handleChangeNotes(e) {
 		notes = e.target.value;

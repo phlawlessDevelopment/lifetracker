@@ -9,21 +9,15 @@
 	let date = new Date();
 	let weight = 0;
 
-	function handleSubmit() {
-		MoodStore.update((m) => [
-			...m,
-			{
-				weight,
-				count: $SmokeCountStore,
-				notes,
-				date,
-				values: values.map((v) => labels[v])
-			}
-		]);
-		weight = 0;
-		count = 0;
-		notes = '';
-		values = [];
+	async function handleSubmit() {
+		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/mood/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+
+			body: JSON.stringify({ notes, date_time: date, weight, count })
+		});
 	}
 
 	function handleChangeNotes(e) {
