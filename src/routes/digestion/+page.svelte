@@ -25,16 +25,19 @@
 		const data = await response.json();
 
 		for (let i = 0; i < values.length; i++) {
-			const  = await fetch(`https://phlawless.eu.pythonanywhere.com/api/digestion_choice/`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					text: labels[values[i]],
-					digestion: data.id
-				})
-			});
+			const response = await fetch(
+				'https://phlawless.eu.pythonanywhere.com/api/digestion_choice/',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						text: labels[values[i]],
+						digestion: data.id
+					})
+				}
+			);
 		}
 	}
 	function handleChangeNotes(e) {
