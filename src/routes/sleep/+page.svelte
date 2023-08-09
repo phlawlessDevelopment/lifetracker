@@ -4,6 +4,7 @@
 	import Datestamp from '../../components/widgets/datestamp.svelte';
 
 	import { SleepRangeStore } from '../../stores';
+	import { UserStore } from '../../stores';
 
 	let times = [];
 	let today = new Date();

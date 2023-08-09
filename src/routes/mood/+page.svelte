@@ -2,6 +2,8 @@
 	import ChoiceGrid from '../../components/widgets/choiceGrid.svelte';
 	import NotesInput from '../../components/widgets/notesInput.svelte';
 	import Datestamp from '../../components/widgets/datestamp.svelte';
+	import { UserStore } from '../../stores';
+
 	let labels = [
 		'excited',
 		'happier',
@@ -54,7 +56,7 @@
 			const res = await fetch(`https://phlawless.eu.pythonanywhere.com/api/mood_choice/`, {
 				method: 'POST',
 				headers: {
-				Authorization: `Token ${$UserStore}`,
+					Authorization: `Token ${$UserStore}`,
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({

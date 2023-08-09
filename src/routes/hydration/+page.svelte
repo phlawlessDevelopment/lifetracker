@@ -4,6 +4,7 @@
 	import NotesInput from '../../components/widgets/notesInput.svelte';
 	import DateStamp from '../../components/widgets/datestamp.svelte';
 	import { DrinkOptionsStore, MesurementOptionsStore } from '../../stores';
+	import { UserStore } from '../../stores';
 
 	let selectedSize = $MesurementOptionsStore[0];
 	let selectedDrink = $DrinkOptionsStore[0];

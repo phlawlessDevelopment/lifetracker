@@ -3,6 +3,7 @@
 	import Datestamp from '../components/widgets/datestamp.svelte';
 	import OptionWithAdd from '../components/widgets/optionWithAdd.svelte';
 	import { FoodOptionsStore } from '../stores';
+	import { UserStore } from '../../stores';
 
 	let meal = $FoodOptionsStore[0];
 	let notes = '';

@@ -2,6 +2,7 @@
 	import NotesInput from '../../components/widgets/notesInput.svelte';
 	import Datestamp from '../../components/widgets/datestamp.svelte';
 	import ChoiceGrid from '../../components/widgets/choiceGrid.svelte';
+	import { UserStore } from '../../stores';
 
 	let labels = ['excited', 'happier', 'happy'];
 	let icons = ['healthicons:intestine', 'healthicons:stomach', 'healthicons:vomiting'];
