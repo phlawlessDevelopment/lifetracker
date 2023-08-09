@@ -12,6 +12,8 @@
 		FoodStore.update((f) => [...f, { food: meal, notes, date }]);
 		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/food/', {
 			method: 'POST',
+			headers:{
+ "Content-Type": "application/json",	},
 			body: JSON.stringify({ notes, meal, date_time: date })
 		});
 		console.log(response);
