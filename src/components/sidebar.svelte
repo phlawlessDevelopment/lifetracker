@@ -7,10 +7,10 @@
 
 <AppRail>
 	<AppRailAnchor href="/" selected={$page.url.pathname === '/'} name="food" title="food">
-		<svelte:fragment slot="lead">
+		<div class="flex flex-col justify-center items-center p-0">
 			<iconify-icon class="h1" icon="mdi:baguette" />
-		</svelte:fragment>
-		<span>Food</span>
+			<span>Food</span>
+		</div>
 	</AppRailAnchor>
 	<AppRailAnchor
 		href="/hydration"
@@ -18,35 +18,39 @@
 		name="hydration"
 		title="hydration"
 	>
-		<svelte:fragment slot="lead">
+		<div class="flex flex-col justify-center items-center p-0">
 			<iconify-icon class="h1" icon="mdi:cup-water" />
-		</svelte:fragment>
-		<span>Hydration</span>
-	</AppRailAnchor>
+			<span>Hydration</span>
+		</div></AppRailAnchor
+	>
 	<AppRailAnchor
 		href="/sleep"
 		selected={$page.url.pathname === '/sleep'}
 		name="sleep"
 		title="sleep"
 	>
-		<svelte:fragment slot="lead">
+		<div class="flex flex-col justify-center items-center p-0">
 			<iconify-icon class="h1" icon="mdi:power-sleep" />
-		</svelte:fragment>
-		<span>sleep</span>
-	</AppRailAnchor>
+			<span>sleep</span>
+		</div></AppRailAnchor
+	>
 	<AppRailAnchor href="/mood" selected={$page.url.pathname === '/mood'} name="mood" title="mood">
-		<iconify-icon class="h1" icon="mdi:emoticon" />
-		<span>Mood</span>
-	</AppRailAnchor>
+		<div class="flex flex-col justify-center items-center p-0">
+			<iconify-icon class="h1" icon="mdi:emoticon" />
+			<span>Mood</span>
+		</div></AppRailAnchor
+	>
 	<AppRailAnchor
 		href="/digestion"
 		selected={$page.url.pathname === '/digestion'}
 		name="digestion"
 		title="digestion"
 	>
-		<iconify-icon class="h1" icon="mdi:stomach" />
-		<span>Digestion</span>
-	</AppRailAnchor>
+		<div class="flex flex-col justify-center items-center p-0">
+			<iconify-icon class="h1" icon="mdi:stomach" />
+			<span>Digestion</span>
+		</div></AppRailAnchor
+	>
 
 	<AppRailAnchor
 		href="/smoking"
@@ -54,9 +58,11 @@
 		name="smoking"
 		title="smoking"
 	>
-		<iconify-icon class="h1" icon="mdi:smoke" />
-		<span>Smoking</span>
-	</AppRailAnchor>
+		<div class="flex flex-col justify-center items-center p-0">
+			<iconify-icon class="h1" icon="mdi:smoke" />
+			<span>Smoking</span>
+		</div></AppRailAnchor
+	>
 	<!-- --- -->
 	<svelte:fragment slot="trail">
 		{#if $UserStore}
