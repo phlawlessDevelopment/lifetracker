@@ -2,7 +2,7 @@
 	import NotesInput from '../components/widgets/notesInput.svelte';
 	import Datestamp from '../components/widgets/datestamp.svelte';
 	import OptionWithAdd from '../components/widgets/optionWithAdd.svelte';
-	import { FoodOptionsStore  } from '../stores';
+	import { FoodOptionsStore } from '../stores';
 
 	let meal = $FoodOptionsStore[0];
 	let notes = '';

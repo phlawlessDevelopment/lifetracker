@@ -8,7 +8,7 @@
 	let times = [];
 	let today = new Date();
 	let date = new Date();
-	let notes;
+	let notes = '';
 
 	SleepRangeStore.subscribe((s) => {
 		times = [...s];
