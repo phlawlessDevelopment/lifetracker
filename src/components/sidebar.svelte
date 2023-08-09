@@ -62,7 +62,7 @@
 		{#if $UserStore}
 			<div class="flex flex-col justify-center items-center p-0">
 				<iconify-icon class="h1" icon="mdi:user" />
-				<span></span>
+				<span>$UserStore.username</span>
 			</div>
 		{:else}
 			<AppRailAnchor
