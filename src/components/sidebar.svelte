@@ -63,4 +63,15 @@
 		<span>Smoking</span>
 	</AppRailAnchor>
 	<!-- --- -->
+	<AppRailAnchor
+		href="/login"
+		selected={$page.url.pathname === '/login'}
+		name="login"
+		title="login"
+	>
+		<svelte:fragment slot="trail">
+			<iconify-icon class="h1" icon="mdi:user" />
+		</svelte:fragment>
+		<span>login</span>
+	</AppRailAnchor>
 </AppRail>
