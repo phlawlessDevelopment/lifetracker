@@ -2,9 +2,9 @@ import { writable } from 'svelte/store';
 import { localStorageStore } from '@skeletonlabs/skeleton';
 
 // State
-const UserStore = writable(null);
 const PageStore = writable("Home");
 const SleepRangeStore = writable([])
+const UserStore = localStorageStore(null);
 const SmokeCountStore = localStorageStore("SmokeCount", 0);
 const FoodOptionsStore = localStorageStore("FoodOptions", ['Meatballs + Cranberry', 'Cornflakes + Raisins']);
 const DrinkOptionsStore = localStorageStore("DrinkOptions", ['Ribena', 'Ovaltine', 'Milk']);
