@@ -1,8 +1,12 @@
 <script>
 	import { AppRail, AppRailAnchor } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
-
+	import { goto } from '$app/navigation';
 	import { UserStore } from '../stores';
+
+	if(!$UserStore && path.url.pathname!=='/login')
+		goto("/login")
+
 </script>
 
 <AppRail>
