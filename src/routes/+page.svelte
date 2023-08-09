@@ -12,7 +12,8 @@
 		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/food/', {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				Authorization: `Token ${$UserStore}`
 			},
 
 			body: JSON.stringify({ notes, meal, date_time: date })

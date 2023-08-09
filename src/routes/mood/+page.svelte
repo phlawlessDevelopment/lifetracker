@@ -42,6 +42,7 @@
 		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/mood/', {
 			method: 'POST',
 			headers: {
+				Authorization: `Token ${$UserStore}`,
 				'Content-Type': 'application/json'
 			},
 
@@ -53,6 +54,7 @@
 			const res = await fetch(`https://phlawless.eu.pythonanywhere.com/api/mood_choice/`, {
 				method: 'POST',
 				headers: {
+				Authorization: `Token ${$UserStore}`,
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({

@@ -3,7 +3,7 @@
 	import Number from '../../components/widgets/number.svelte';
 	import NotesInput from '../../components/widgets/notesInput.svelte';
 	import Datestamp from '../../components/widgets/datestamp.svelte';
-	import { SmokeCountStore } from '../../stores';
+	import { SmokeCountStore, UserStore } from '../../stores';
 
 	let notes = '';
 	let date = new Date();
@@ -13,7 +13,8 @@
 		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/smoking/', {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				Authorization: `Token ${$UserStore}`
 			},
 
 			body: JSON.stringify({ notes, date_time: date, weight, count: $SmokeCountStore })

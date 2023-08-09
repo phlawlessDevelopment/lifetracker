@@ -17,6 +17,7 @@
 		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/digestion/', {
 			method: 'POST',
 			headers: {
+				Authorization: `Token ${$UserStore}`,
 				'Content-Type': 'application/json'
 			},
 
@@ -30,6 +31,7 @@
 				{
 					method: 'POST',
 					headers: {
+						Authorization: `Token ${$UserStore}`,
 						'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({
