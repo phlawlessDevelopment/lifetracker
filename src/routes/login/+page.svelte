@@ -4,11 +4,11 @@
 	let username;
 	let password;
 
-	// 'https://phlawless.eu.pythonanywhere.com/get-token'
-	// 'http://localhost:8000/get-token'
+	// 'https://phlawless.eu.pythonanywhere.com/get-token/'
+	// 'http://localhost:8000/get-token/'
 
 	async function handleSubmit() {
-		const response = await fetch('https://phlawless.eu.pythonanywhere.com/get-token', {
+		const response = await fetch('https://phlawless.eu.pythonanywhere.com/get-token/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
