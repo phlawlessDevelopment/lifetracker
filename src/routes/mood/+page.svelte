@@ -44,7 +44,7 @@
 		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/mood/', {
 			method: 'POST',
 			headers: {
-				Authorization: `Token ${$UserStore}`,
+				Authorization: `Token ${$UserStore.token}`,
 				'Content-Type': 'application/json'
 			},
 

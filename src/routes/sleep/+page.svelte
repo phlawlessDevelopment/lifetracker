@@ -48,7 +48,7 @@
 		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/sleep/', {
 			method: 'POST',
 			headers: {
-				Authorization: `Token ${$UserStore}`,
+				Authorization: `Token ${$UserStore.token}`,
 				'Content-Type': 'application/json'
 			},
 
@@ -59,7 +59,7 @@
 			fetch('https://phlawless.eu.pythonanywhere.com/api/sleep_range/', {
 				method: 'POST',
 				headers: {
-					Authorization: `Token ${$UserStore}`,
+					Authorization: `Token ${$UserStore.token}`,
 					'Content-Type': 'application/json'
 				},
 

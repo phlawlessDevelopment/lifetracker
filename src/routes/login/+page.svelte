@@ -1,6 +1,6 @@
 <script>
 	import { UserStore } from '../../stores';
-
+	import { goto } from '$app/navigation';
 	let username;
 	let password;
 
@@ -17,7 +17,8 @@
 		});
 		const data = await response.json();
 		if (data.token) {
-			UserStore.set(data.token);
+			UserStore.set({ username, token: data.token });
+			goto('/');
 		}
 	}
 	function handleKeyUp(e) {

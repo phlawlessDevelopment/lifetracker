@@ -14,7 +14,7 @@
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Token ${$UserStore}`
+				Authorization: `Token ${$UserStore.token}`
 			},
 
 			body: JSON.stringify({ notes, meal, date_time: date })

@@ -1,7 +1,8 @@
 <script>
 	import { AppRail, AppRailAnchor } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
-	let currentTile = 0;
+
+	import { UserStore } from '../stores';
 </script>
 
 <AppRail>
@@ -34,9 +35,7 @@
 		<span>sleep</span>
 	</AppRailAnchor>
 	<AppRailAnchor href="/mood" selected={$page.url.pathname === '/mood'} name="mood" title="mood">
-		<svelte:fragment slot="lead">
-			<iconify-icon class="h1" icon="mdi:emoticon" />
-		</svelte:fragment>
+		<iconify-icon class="h1" icon="mdi:emoticon" />
 		<span>Mood</span>
 	</AppRailAnchor>
 	<AppRailAnchor
@@ -45,9 +44,7 @@
 		name="digestion"
 		title="digestion"
 	>
-		<svelte:fragment slot="lead">
-			<iconify-icon class="h1" icon="mdi:stomach" />
-		</svelte:fragment>
+		<iconify-icon class="h1" icon="mdi:stomach" />
 		<span>Digestion</span>
 	</AppRailAnchor>
 
@@ -57,21 +54,28 @@
 		name="smoking"
 		title="smoking"
 	>
-		<svelte:fragment slot="lead">
-			<iconify-icon class="h1" icon="mdi:smoke" />
-		</svelte:fragment>
+		<iconify-icon class="h1" icon="mdi:smoke" />
 		<span>Smoking</span>
 	</AppRailAnchor>
 	<!-- --- -->
 	<svelte:fragment slot="trail">
-		<AppRailAnchor
-			href="/login"
-			selected={$page.url.pathname === '/login'}
-			name="login"
-			title="login"
-		>
-			<iconify-icon class="h1" icon="mdi:user" />
-			<span>login</span>
-		</AppRailAnchor>
+		{#if $UserStore}
+			<div class="flex flex-col justify-center items-center p-0">
+				<iconify-icon class="h1" icon="mdi:user" />
+				<span></span>
+			</div>
+		{:else}
+			<AppRailAnchor
+				href="/login"
+				selected={$page.url.pathname === '/login'}
+				name="login"
+				title="login"
+			>
+				<div class="flex flex-col justify-center items-center p-0">
+					<iconify-icon class="h1" icon="mdi:user" />
+					<span>Login</span>
+				</div>
+			</AppRailAnchor>
+		{/if}
 	</svelte:fragment>
 </AppRail>
