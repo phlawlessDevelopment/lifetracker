@@ -2,24 +2,21 @@
 	import NotesInput from '../components/widgets/notesInput.svelte';
 	import Datestamp from '../components/widgets/datestamp.svelte';
 	import OptionWithAdd from '../components/widgets/optionWithAdd.svelte';
-	import { FoodOptionsStore, FoodStore } from '../stores';
+	import { FoodOptionsStore  } from '../stores';
 
 	let meal = $FoodOptionsStore[0];
 	let notes = '';
 	let date = new Date();
 
 	async function handleSubmit() {
-		FoodStore.update((f) => [...f, { food: meal, notes, date }]);
 		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/food/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 
-			body: JSON.stringify({ notes, meal, date_time: date.toISOString() })
+			body: JSON.stringify({ notes, meal, date_time: date })
 		});
-		console.log(response);
-		console.log(JSON.stringify({ notes, meal, date_time: date.toISOString() }));
 	}
 	function handleChangeSelect(e) {
 		meal = e.target.value;

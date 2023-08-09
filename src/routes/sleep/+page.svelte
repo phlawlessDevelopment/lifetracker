@@ -34,8 +34,32 @@
 		const idx = e.detail;
 		SleepRangeStore.set(times.toSpliced(idx, 1));
 	}
-	function handleSubmit() {
+	async function handleSubmit() {
 		SleepStore.update((f) => [...f, { times, notes, date }]);
+
+		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/sleep/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+
+			body: JSON.stringify({ notes, date_time: date })
+		});
+		let data = await response.json();
+		for (let i = 0; i < times.length; i++) {
+			fetch('https://phlawless.eu.pythonanywhere.com/api/sleep_range/', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+
+				body: JSON.stringify({
+					sleep: data.id,
+					from_time: times[i].lowerVal,
+					to_time: times[i].upperVal
+				})
+			});
+		}
 	}
 	function handleChangeNotes(e) {
 		console.log(e);

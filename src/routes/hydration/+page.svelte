@@ -21,11 +21,21 @@
 		amount = e.target.value;
 	}
 
-	function handleSubmit() {
-		HydrationStore.update((h) => [
-			...h,
-			{ drink: selectedDrink, mesurement: selectedSize, amount, notes, date }
-		]);
+	async function handleSubmit() {
+		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/hydration/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+
+			body: JSON.stringify({
+				notes,
+				date_time: date,
+				drink: selectedDrink,
+				mesurement: selectedSize,
+				amount,
+			})
+		});
 	}
 	function handleChangeNotes(e) {
 		console.log(e);
