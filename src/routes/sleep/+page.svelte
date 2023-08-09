@@ -54,13 +54,6 @@
 		});
 		let data = await response.json();
 		for (let i = 0; i < times.length; i++) {
-			console.log(
-				JSON.stringify({
-					sleep: data.id,
-					from_time: convertTime(times[i].lowerVal),
-					to_time: convertTime(times[i].upperVal)
-				})
-			);
 			fetch('https://phlawless.eu.pythonanywhere.com/api/sleep_range/', {
 				method: 'POST',
 				headers: {
@@ -69,8 +62,8 @@
 
 				body: JSON.stringify({
 					sleep: data.id,
-					from_time: times[i].lowerVal,
-					to_time: times[i].upperVal
+					from_time: convertTime(times[i].lowerVal),
+					to_time: convertTime(times[i].upperVal)
 				})
 			});
 		}
