@@ -16,7 +16,7 @@
 				'Content-Type': 'application/json'
 			},
 
-			body: JSON.stringify({ notes, date_time: date, weight, $SmokeCountStore })
+			body: JSON.stringify({ notes, date_time: date, weight, count:$SmokeCountStore })
 		});
 	}
 
