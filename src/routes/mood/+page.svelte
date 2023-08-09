@@ -32,7 +32,7 @@
 		'mdi:emoticon-poop'
 	];
 	let values = [];
-	let notes;
+	let notes = "";
 	let date = new Date();
 
 	function handleSelect(e) {

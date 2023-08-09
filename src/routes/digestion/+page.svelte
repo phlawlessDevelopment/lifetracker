@@ -8,7 +8,7 @@
 	let labels = ['excited', 'happier', 'happy'];
 	let icons = ['healthicons:intestine', 'healthicons:stomach', 'healthicons:vomiting'];
 	let values = [];
-	let notes;
+	let notes="";
 	let date = new Date();
 
 	function handleSelect(e) {
