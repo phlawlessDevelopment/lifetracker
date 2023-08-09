@@ -7,8 +7,8 @@
 	store.subscribe((s) => (options = [...s]));
 </script>
 
-<div class="flex flex-col gap-4 p-4">
-	<div class="card variant-glass-tertiary p-4">
+<div class="flex flex-col gap-2 p-2">
+	<div class="card variant-glass-tertiary p-2">
 		<Select label={'Select a ' + label} {options} on:change />
 		<AddOptionInput {label} {store} />
 		<slot />

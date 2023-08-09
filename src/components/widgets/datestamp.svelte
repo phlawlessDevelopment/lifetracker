@@ -3,6 +3,5 @@
 </script>
 
 <label class="label">
-	<span>Change date</span>
 	<input class="input" type="datetime-local" bind:value={datestamp} on:change />
 </label>

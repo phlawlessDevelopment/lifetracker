@@ -17,7 +17,11 @@
 </script>
 
 {label}
-<div class="flex flex-wrap gap-8" background="" rounded="rounded-xl">
+<div
+	class="flex flex-wrap items-center justify-center gap-2 md:gap-4"
+	background=""
+	rounded="rounded-xl"
+>
 	{#each icons as icon, i}
 		<button class:variant-soft-secondary={values.includes(i)} on:click={() => toggleSelection(i)}>
 			<div class="flex flex-col items-center gap-2 p-2">

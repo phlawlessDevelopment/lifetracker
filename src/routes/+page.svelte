@@ -4,15 +4,20 @@
 	import OptionWithAdd from '../components/widgets/optionWithAdd.svelte';
 	import { FoodOptionsStore, FoodStore } from '../stores';
 
-	let food = $FoodOptionsStore[0];
+	let meal = $FoodOptionsStore[0];
 	let notes;
 	let date = new Date();
 
-	function handleSubmit() {
-		FoodStore.update((f) => [...f, { food, notes, date }]);
+	async function handleSubmit() {
+		FoodStore.update((f) => [...f, { food: meal, notes, date }]);
+		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/food/', {
+			method: 'POST',
+			body: JSON.stringify({ notes, meal, date_time: date })
+		});
+		console.log(response);
 	}
 	function handleChangeSelect(e) {
-		food = e.target.value;
+		meal = e.target.value;
 	}
 	function handleChangeNotes(e) {
 		console.log(e);

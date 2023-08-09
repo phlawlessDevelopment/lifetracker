@@ -37,7 +37,9 @@
 	}
 </script>
 
-<div class="card variant-glass-tertiary flex flex-col gap-2 p-4 md:grid md:grid-cols-2 md:gap-4">
+<div
+	class="card variant-glass-tertiary flex flex-col gap-2 p-2 md:grid md:grid-cols-2 md:gap-4 md:p-4"
+>
 	<div class="col-span-2">
 		<OptionWithAdd label="drink" on:change={handleChangeDrink} store={DrinkOptionsStore}>
 			<OptionWithAdd label="mesurement" on:change={handleChangeSize} store={MesurementOptionsStore}>

@@ -7,7 +7,7 @@
 
 	let notes;
 	let date = new Date();
-	let weight;
+	let weight = 0;
 
 	function handleSubmit() {
 		MoodStore.update((m) => [
@@ -20,6 +20,10 @@
 				values: values.map((v) => labels[v])
 			}
 		]);
+		weight = 0;
+		count = 0;
+		notes = '';
+		values = [];
 	}
 
 	function handleChangeNotes(e) {
@@ -35,20 +39,12 @@
 	}
 </script>
 
-<div class="flex flex-col gap-4 p-4">
-	<div class="card variant-glass-tertiary p-4">
-		<Counter label="Daily count" />
-	</div>
-	<div class="card variant-glass-tertiary p-4">
-		<Number on:change={handleChangeNumber} label="Weight (g)" />
-	</div>
-	<div class="card variant-glass-tertiary p-4">
-		<NotesInput on:change={handleChangeNotes} />
-	</div>
-	<div class="card variant-glass-tertiary p-4">
-		<Datestamp on:change={handleChangeDate} />
-	</div>
-	<div class="card variant-glass-tertiary p-4">
-		<button class="btn variant-filled-warning w-full" on:click={handleSubmit}>Submit</button>
-	</div>
+<div class="card variant-glass-tertiary flex flex-col gap-2 p-4 md:grid md:grid-cols-2 md:gap-4">
+	<Counter label="Daily count" />
+	<Number on:change={handleChangeNumber} label="Weight (g)" />
+	<NotesInput on:change={handleChangeNotes} />
+	<Datestamp on:change={handleChangeDate} />
+	<button class="col-span-2 btn variant-filled-warning w-full" on:click={handleSubmit}
+		>Submit</button
+	>
 </div>
