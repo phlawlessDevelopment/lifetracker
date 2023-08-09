@@ -10,13 +10,13 @@
 	let weight = 0;
 
 	async function handleSubmit() {
-		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/mood/', {
+		const response = await fetch('https://phlawless.eu.pythonanywhere.com/api/smoking/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 
-			body: JSON.stringify({ notes, date_time: date, weight, count:$SmokeCountStore })
+			body: JSON.stringify({ notes, date_time: date, weight, count: $SmokeCountStore })
 		});
 	}
 
