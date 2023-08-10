@@ -23,7 +23,7 @@
 	rounded="rounded-xl"
 >
 	{#each icons as icon, i}
-		<button class:variant-soft-secondary={values.includes(i)} on:click={() => toggleSelection(i)}>
+		<button class:variant-ghost-secondary={values.includes(i)} on:click={() => toggleSelection(i)}>
 			<div class="flex flex-col items-center gap-2 p-2">
 				<iconify-icon class="h1" {icon} />
 				<span>{labels[i]}</span>
